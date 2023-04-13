@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-@WebServlet("/Session1")
-public class SessionTest extends HttpServlet {
+@WebServlet("/Session3")
+public class SessionTest3 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -33,6 +33,8 @@ public class SessionTest extends HttpServlet {
 		if(session.isNew()) {
 			out.print("새 세션이 만들어졌습니다.");
 		}
+		// 생성된 세션 객체를 강제로 삭제.
+		session.invalidate();
 	}
 
 }

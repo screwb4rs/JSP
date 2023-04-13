@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-@WebServlet("/Session1")
-public class SessionTest extends HttpServlet {
+@WebServlet("/Session2")
+public class SessionTest2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -26,6 +26,8 @@ public class SessionTest extends HttpServlet {
 		out.println("최초 세션 생성 시각 : " + new Date(session.getCreationTime()) + "<br>");
 												// 세션 객체에 가장 최근에 접근한 시간을 가져 옴.
 		out.println("최근 세션 접근 시각 : " + new Date(session.getLastAccessedTime()) + "<br>");
+		session.setMaxInactiveInterval(5);		// 세션의 유효 시간을 5초로 설정.
+		out.println("기본 세션 유효 시간 : " + session.getMaxInactiveInterval() + "<br>");
 												// 세션 객체의 유효 시간을 가져 옴.
 		out.println("세션 유효 시간 : " + session.getMaxInactiveInterval() + "<br>");
 		
