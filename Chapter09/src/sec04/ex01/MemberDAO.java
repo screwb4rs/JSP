@@ -118,7 +118,7 @@ public class MemberDAO {
 			
 			// decode() 함수를 이용하여 SQL문으로 회원 정보를 조회.
 			// 아이디와 비밀번호가 테이블에 있으면 true를 반환하고, 없으면 false를 반환.
-			String query = "select decode(count(*), 0, 'true', 'false') as result from t_member";
+			String query = "select decode(count(*), 1, 'true', 'false') as result from t_member";
 			query += " where id=? and pwd=?";
 			System.out.println(query);
 			
