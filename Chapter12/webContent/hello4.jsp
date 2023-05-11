@@ -12,7 +12,7 @@
 <!-- 스크립트릿 작성 -->
 <%
 	/* 스크립트릿 주석 처리 = */
-	/*String age = request.getParameter("age");*/
+	String age = request.getParameter("age");
 %>
 <!DOCTYPE html>
 <html>
