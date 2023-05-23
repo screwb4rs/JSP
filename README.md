@@ -7,3 +7,5 @@
 
 2023년 3월 21일 sqldeveloper, memberservlet 수업<br>
 완료
+
+https://stackoverflow.com/questions/8021370/java-lang-noclassdeffounderror-javax-servlet-jsp-tagext-taglibraryvalidator
