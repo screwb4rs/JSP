@@ -3,7 +3,6 @@ package sec01.ex01;
 import java.sql.Date;
 
 public class MovieVO {
-
 	private String movie_num;
 	private String movie_name;
 	private String movie_content;
@@ -43,7 +42,7 @@ public class MovieVO {
 	public void setMovie_content(String movie_content) {
 		this.movie_content = movie_content;
 	}
-
+	
 	public String getMember_id() {
 		return member_id;
 	}
@@ -51,5 +50,4 @@ public class MovieVO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	
 }

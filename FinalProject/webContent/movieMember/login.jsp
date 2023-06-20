@@ -22,12 +22,6 @@
 	   <style>
 	   		#wrap{margin-left:auto; margin-right:auto;text-align:center;}
 	   </style>
-	   <script type="text/javascript">
-	   		function logout(){
-	   			alert("로그아웃 되었습니다.");
-	   			location.href="../movieMember/logout.jsp";
-	   		}
-	   </script>
 	</head>
 	<body>
 	   <div>
@@ -38,25 +32,7 @@
 		   </header>
 		   
 		   <nav>
-				<ul>
-				   	<li><a href="#">영화</a></li>
-					<li><a href="#">극장</a></li>
-					<li><a href="#">예매</a></li>
-					<%
-						if(session == null || !request.isRequestedSessionIdValid()){
-					%>
-					<li><a href="../movieMember/loginForm.jsp">로그인</a></li>
-					<li><a href="../movieMember/newMemberForm.jsp">회원가입</a></li>
-					<%
-						}
-						else{
-					%>
-					<li><a href="../movieMember/logout.jsp">로그아웃</a></li>
-					<%
-						}
-					%>
-					<li><a href="${contextPath}/member/members.do">회원정보</a>
-		 		</ul>
+				<jsp:include page="../include/menu.jsp"/>
 		   </nav>
 		   
 		   <section>

@@ -109,6 +109,51 @@ public class MemberDAO {
 		return check;
 	}
 	
+	public MemberVO findMember(String _id) {
+		MemberVO memInfo = null;
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select * from  movie_member where id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, _id);
+			System.out.println(query);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			String id = rs.getString("id");
+			String pwd = rs.getString("pwd");
+			String name = rs.getString("name");
+			String email = rs.getString("email");
+			memInfo = new MemberVO(id, pwd, name, email);
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memInfo;
+	}
+	
+	public void modMember(MemberVO memberVO) {
+		String id = memberVO.getId();
+		String pwd = memberVO.getPwd();
+		String name = memberVO.getName();
+		String email = memberVO.getEmail();
+		try {
+			conn = dataFactory.getConnection();
+			String query = "update movie_member set pwd=?,name=?,email=?  where id=?";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void delMember(String id) {
 		try {
 			conn = dataFactory.getConnection();

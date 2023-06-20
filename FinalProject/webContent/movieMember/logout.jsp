@@ -27,6 +27,7 @@
 			}
 			response.sendRedirect("../HomePage/HomePage.jsp");
 		%>
+		<!-- 
 	   <div>
 		   <header>
 		   		<hgroup>
@@ -57,5 +58,6 @@
 		   <footer>
 		   </footer>
 	   </div>
+	    -->
 	</body>	
 </html>

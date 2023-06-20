@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+	import = "java.util.*, sec01.ex01.*"
 	pageEncoding="UTF-8"
-	isELIgnored="false" 
-%>
+	isELIgnored="false" %>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}"  />  
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />  
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -17,6 +17,7 @@
 	<head>
 	<meta charset="UTF-8">
 		<title>영화리스트</title>
+		<link rel="stylesheet" href="../css/layout.css">
 		<style>
 			    .cls1 {
 			      font-size:40px;
@@ -27,11 +28,15 @@
 			      font-size:20px;
 			      text-align:center;
 			    }
-			</style>
-	   	<link rel="stylesheet" href="../css/layout.css">
+		</style>
+		<script type="text/javascript">
+			function addmovie(){
+	   			location.href="../movie/addmovieForm.jsp";
+			}
+		</script>
 	</head>
 	<body>
-		<form method="post" action="${contextPath }/movie/movies.do">
+		<form method="post" action="${contextPath }/member/movie.do">
 	   <div>
 		   <header>
 		   		<hgroup>
@@ -40,35 +45,29 @@
 		   </header>
 		   
 		   <nav>
-				<ul>
-				   	<li><a href="../movie/movies.jsp">영화</a></li>
-					<li><a href="#">극장</a></li>
-					<li><a href="#">예매</a></li>
-					<%
-						if(session == null || !request.isRequestedSessionIdValid()){
-					%>
-					<li><a href="../movieMember/loginForm.jsp">로그인</a></li>
-					<li><a href="../movieMember/newMemberForm.jsp">회원가입</a></li>
-					<%
-						}
-						else{
-					%>
-					<li><a href="../movieMember/logout.jsp">로그아웃</a></li>
-					<%
-						}
-					%>
-					<li><a href="${contextPath}/member/members.do">회원정보</a>
-		 		</ul>
+				<jsp:include page="../include/menu.jsp"/>
 		   </nav>
 		   
 		   <section>
+		   		<%
+				if(session.getAttribute("sessionID") != null && session.getAttribute("sessionID").equals("admin")){
+				%>
+			   	<input type="button" value="추가" onclick="addmovie()">
+			   	<%
+				}
+			   	%>
 		   		<table align="center" border="1" >
 			   		<article>
 						<tr align="center" bgcolor="lightgreen">
 							<td width="7%" ><b>번호</b></td>
 							<td width="7%" ><b>제목</b></td>
-							<td width="7%" ><b>내용</b></td>
-							<td width="7%" ><b>작성자</b></td>
+							<%
+							if(session.getAttribute("sessionID") != null && session.getAttribute("sessionID").equals("admin")){
+							%>
+							<td width="7%" ><b>삭제</b></td>
+							<%
+							}
+							%>
 			       		</tr>
 			   		</article>
 			   		<article>
@@ -84,15 +83,31 @@
 				   				<c:forEach  var="mov" items="${movieList }" >
 									<tr align="center">
 										<td>${mov.movie_num }</td>
-										<td>${mov.movie_name }</td>
-										<td>${mov.movie_content}</td>
-										<td>${mov.member_id }</td>
+										<td><a href="${contextPath}/member/viewmovie.do?movie_num=${mov.movie_num }">${mov.movie_name }</a></td>
+										<%
+										if(session.getAttribute("sessionID") != null && session.getAttribute("sessionID").equals("admin")){
+										%>
+										<td><a href="${contextPath}/member/delmovie.do?movie_num=${mov.movie_num }">삭제</a></td> 
+										<%
+										}
+										%>
 									</tr>
 								</c:forEach>
 			   				</c:when>
 			   			</c:choose>
 			   		</article>
 			   	</table>
+			   	<div align="center">
+			   		<form>
+			   			<select name="option">
+			   				<option value="0">제목</option>
+			   				<option value="1">내용</option>
+			   				<option value="2">작성자</option>
+			   			</select>
+			   			<input type="text" size="20" name="condition"/>&nbsp;
+			   			<input type="submit" value="검색"/>
+			   		</form>
+			   	</div>
 		   </section>
 		   
 		   <aside>

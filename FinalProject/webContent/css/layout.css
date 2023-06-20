@@ -7,14 +7,14 @@ body,input,button{font-family:NanumGothicWeb,verdana,dotum,sans-serif;font-size:
 body{background-color:#fff}
 li{list-style:none}
 #container{width:80%;margin:0 auto}
-header{margin-top:20px;padding:20px;border:1px solid #000;background:#6600cc }
+header{margin-top:20px;padding:20px;border:1px solid #000;background:#d95e53 }
 hgroup{overflow:hidden;padding-bottom:20px}
 hgroup h1{float:left;color:#fff}
 hgroup h2{float:right;font-weight:normal;color:#fff;opacity:0.8}
 nav{clear:both;overflow:hidden}
 nav li{float:left;padding-right:5px;font-family:verdana}
 nav li a{display:inline-block;padding:10px; border-radius:5px;background-color:#fff; text-decoration: none;color:green}
-section{float:left;width:70%;height:200px;margin-top:15px;margin-bottom:20px;padding:20px;border:1px solid #330000;line-height:25px;background:#99ccff  }	      
+section{float:left;width:70%;height:450px;margin-top:15px;margin-bottom:20px;padding:20px;border:1px solid #330000;line-height:25px;background:#99ccff  }	      
 article{margin-bottom:10px}
 article h3{font-size:16px}
 aside{float:right;width:20%;height:200px;padding:20px;margin-top:15px;border:1px solid #330000;line-height:20px ;background:#99ccff }

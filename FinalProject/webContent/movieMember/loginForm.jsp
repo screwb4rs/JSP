@@ -57,14 +57,7 @@
 			</header>
 		   
 			<nav>
-				<ul>
-				   	<li><a href="#">영화</a></li>
-					<li><a href="#">극장</a></li>
-					<li><a href="#">예매</a></li>
-					<li><a href="../movieMember/loginForm.jsp">로그인</a></li>
-					<li><a href="../movieMember/newMemberForm.jsp">회원가입</a></li>
-					<li><a href="${contextPath}/member/members.do">회원정보</a>
-		 		</ul>
+				<jsp:include page="../include/menu.jsp"/>
 			</nav>
 		   
 			<section>

@@ -4,10 +4,14 @@
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"  />  
+
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 %>    
+
+<!DOCTYPE html>
 <html>
 	<head>
 	   <meta  charset="UTF-8">
@@ -34,6 +38,7 @@ request.setCharacterEncoding("UTF-8");
 				<td width="7%" ><b>비밀번호</b></td>
 				<td width="7%" ><b>이름</b></td>
 				<td width="7%"><b>이메일</b></td>
+				<td width="7%" ><b>수정</b></td>
 				<td width="7%" ><b>삭제</b></td>
        		</tr>
 
@@ -52,6 +57,7 @@ request.setCharacterEncoding("UTF-8");
 							<td>${mem.pwd }</td>
 							<td>${mem.name}</td>     
 							<td>${mem.email }</td>
+							<td><a href="${contextPath}/member/modmemberForm.do?id=${mem.id }">수정</a></td>
 							<td><a href="${contextPath}/member/delMember.do?id=${mem.id }">삭제</a></td> 
 						</tr>
 					</c:forEach>

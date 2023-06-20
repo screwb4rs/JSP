@@ -16,33 +16,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<!-- 
-	<c:choose>
-   		<c:when test='${msg=="addMember" }'>
-      		<script>
-      		   window.onload=function(){
-       	  	     alert("회원을 등록했습니다.");
-               }
-      		</script>
-   		</c:when>
-   		<c:when test= '${msg=="deleted" }'>
-      		<script>
-				window.onload=function(){
-					alert("회원 정보를 삭제했습니다.");
-      			} 
-      		</script>
-		</c:when>
-		<c:when test='${msg=="logout" }'>
-      		<script>
-      		   window.onload=function(){
-       	  	     alert("로그아웃 되었습니다.");
-               }
-      		</script>
-   		</c:when>
-	</c:choose>
-	 -->
-	<meta charset="UTF-8">
-		<title>영화관홈페이지</title>
+		<meta charset="UTF-8">
+		<title>영화상세정보</title>
 	   	<link rel="stylesheet" href="../css/layout.css">
 	</head>
 	<body>
@@ -59,7 +34,15 @@
 		   
 		   <section>
 		   		<article>
-		   			
+					<c:forEach  var="mv" items="${movieview }" >
+						<tr align="center">
+							<td>${mv.movie_num }</td><br>
+							<td>${mv.movie_name }</td><br>
+							<td>${mv.movie_content }</td><br>
+							<td>${mv.member_id }</td><br>
+							<td><a href="${contextPath}/member/modmovieForm.do?movie_num=${mv.movie_num }">수정하기</a></td>
+						</tr>
+					</c:forEach>
 		   		</article>
 		   </section>
 		   
